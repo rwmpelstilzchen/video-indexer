@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # This isn't anything worthy of releasing yet.
 # TODO:
 # * make fixed strings (now in Hebrew) flexible, translatable
