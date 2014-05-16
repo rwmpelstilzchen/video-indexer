@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 import sys
 
 
-path = sys.argv[1] # TODO: ugly, to be bettered; TODO: add simple help
+path = sys.argv[1]  # TODO: ugly, to be bettered; TODO: add simple help
 path_length = len(path)
 VIDEO_EXTS = ["avi", "flv", "mkv", "mov", "mp4", "m4v", "ogv"]
 DIR_DESC_FN = "description.xml"
@@ -69,16 +69,20 @@ def process_files(files, root):
             except:
                 try:
                     autolink(filename, "-[^ ]{11}\.", "https://youtu.be/", "")
-                except: # not from Vimeo nor Youtube
-                    if XMLed: # maybe there is a link in the XML file
-                        video_link = xmlroot.find('.//link/..[@filename="' + filename + '"]')
+                except:  # not from Vimeo nor Youtube
+                    if XMLed:  # maybe there is a link in the XML file
+                        video_link = xmlroot.find('.//link/..[@filename="' +
+                                                  filename + '"]')
                         if video_link:
-                            print("* [" + filename[:-len(filename_ext)-1] + "]" +
+                            print("* " +
+                                  "[" + filename[:-len(filename_ext)-1] + "]" +
                                   "(" + video_link.find("link").text + ")")
-                    else: # if nothing is found, don't link
+                    else:  # if nothing is found, don't link
                         print("* " + filename[:-len(filename_ext)-1])
             if XMLed:
-                video_description = xmlroot.find('.//description/..[@filename="' + filename + '"]')
+                video_description = xmlroot.find(
+                    './/description/..[@filename="' +
+                    filename + '"]')
                 if video_description:
                     print("<br/>" + video_description.find("description").text)
 
