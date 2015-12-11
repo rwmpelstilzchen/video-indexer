@@ -22,8 +22,8 @@ DIR_DESC_FN = 'description.xml'
 def process_root(root):
     rootname = root[path_length:]
     if rootname != "/":
-        print ('<h3 id="' + rootname + '">' +
-               re.sub("/", " ◁ ", rootname) + '</h3>')
+        print('<h3 id="' + rootname + '">' +
+              re.sub("/", " ◁ ", rootname) + '</h3>')
 
     dir_description_filename = root + "/" + DIR_DESC_FN
     if os.path.isfile(dir_description_filename):
